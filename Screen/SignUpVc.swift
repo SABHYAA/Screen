@@ -14,6 +14,8 @@ class SignUpVc: UIViewController {
     
     override func viewDidLoad(){
         super.viewDidLoad()
+        
+        
         self.signupTableview.dataSource = self
         self.signupTableview.delegate = self
     }
@@ -113,9 +115,11 @@ extension SignUpVc{
     private func RegisterCell(cell: RegisterCell, index: IndexPath){
         switch index.row {
         case 9:
+            cell.registerBtn.layer.borderWidth = 1.0
             cell.registerBtn.setTitle("SIGNUP", for: .normal)
             
         default:
+            cell.registerBtn.layer.borderWidth = 0
             cell.registerBtn.setTitle("Already have an account? SIGNIN", for: .normal)
         }
     }
@@ -124,6 +128,9 @@ extension SignUpVc{
 class ImageCell: UITableViewCell {
     @IBOutlet weak var profilepicImageView: UIImageView!
     override func awakeFromNib() {
+        self.profilepicImageView.layer.cornerRadius =  self.profilepicImageView.frame.height/2
+        self.profilepicImageView.clipsToBounds = true
+    
     }
     override func prepareForReuse() {
     }
